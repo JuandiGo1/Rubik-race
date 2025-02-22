@@ -90,7 +90,12 @@ function enviarArchivos() {
     formData.append("inicial", inicial);
     formData.append("meta", meta);
 
-    fetch("http://127.0.0.1:5000/upload", {
+    const API_URL = window.location.origin.includes("localhost") 
+    ? "http://127.0.0.1:5000" 
+    : "https://rubik-race.vercel.app";
+
+
+    fetch(`${API_URL}/upload`, {
         method: "POST",
         body: formData
     })
