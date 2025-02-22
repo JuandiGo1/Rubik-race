@@ -77,7 +77,7 @@ function actualizarTablero(id, matriz) {
     });
 }
 
-function enviarArchivos() {
+async function enviarArchivos() {
     const inicial = document.getElementById("inicial").files[0];
     const meta = document.getElementById("meta").files[0];
 
@@ -95,15 +95,18 @@ function enviarArchivos() {
     : "https://rubik-race.vercel.app";
 
 
-    fetch(`${API_URL}/upload`, {
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
-        console.log("Estado de la respuesta:", response.status);
-        return response.json();
-    })
-    .then(data => {
+    try {
+        const response = await fetch(`${API_URL}/upload`, {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status}`);
+        }
+
+        const data = await response.json();
+
         if (data.error) {
             alert("Error: " + data.error);
         } else {
@@ -117,11 +120,10 @@ function enviarArchivos() {
                 alert("No hay solución disponible.");
             }
         }
-    })
-    .catch(error => {
+    } catch (error) {
         console.error("Error en la solicitud:", error);
         alert("Hubo un problema al procesar la solicitud. Revisa la consola.");
-    });
+    }
 }
 
 function mostrarPaso() {
