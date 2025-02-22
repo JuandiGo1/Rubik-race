@@ -17,30 +17,20 @@ import json
 
 """# Lectura y Validación de Archivo"""
 
-def leer_estado(nombre_archivo):
+def leer_estado(desde_texto):
     """
-    Lee el estado desde un archivo de texto.
-
+    Procesa el estado desde un string en memoria.
+    
     Args:
-        nombre_archivo (str): Nombre del archivo a leer.
-
+        desde_texto (str): Texto con el estado.
+    
     Returns:
-        str: Estado como un string, o None si hay un error.
+        str: Estado como un string sin espacios ni saltos de línea.
     """
-    try:
-        with open(nombre_archivo, 'r') as archivo:
-            estado = "".join(line.strip() for line in archivo)  # Leer y concatenar las líneas
-    except FileNotFoundError:
-        print(f"Error: El archivo '{nombre_archivo}' no se encuentra.")
-        return None
-    except Exception as e:
-        print(f"Error al leer el archivo '{nombre_archivo}': {e}")
-        return None
+    estado = "".join(line.strip() for line in desde_texto.split("\n"))
+    return estado.replace(" ", "")
 
-    estado = estado.replace(" ", "")  # Eliminar espacios
-    return estado
-
-def validar_archivo_inicial(estado):
+def validar_estado_inicial(estado):
     """
     Valida el estado inicial: longitud, caracter '*', caracteres válidos y cantidad de colores.
 
@@ -74,7 +64,7 @@ def validar_archivo_inicial(estado):
 
     return True
 
-def validar_archivo_meta(estado):
+def validar_estado_meta(estado):
     """
     Valida el estado meta: longitud, caracteres válidos y cantidad de colores.
 
@@ -360,9 +350,7 @@ def a_estrella(estado_inicial, estado_meta, heuristica=calcular_heuristica_manha
             print("¡Solución encontrada!")
             solucion_json = reconstruir_camino(nodo_actual)
 
-            with open(archivo_salida, "w") as archivo: #Guardar camino en el archivo
-                json.dump({"solucion": solucion_json}, archivo, indent=4)
-            return archivo_salida
+            return solucion_json
 
         for num_movimiento in movimiento(nodo_actual.estado): #Iterar sobre los movimientos posibles
             nuevo_estado = sucesor(nodo_actual.estado, num_movimiento)
@@ -390,10 +378,7 @@ def resolver_rubik_race(archivo_inicial, archivo_meta):
     estado_inicial = leer_estado(archivo_inicial)
     estado_meta = leer_estado(archivo_meta)
     
-    if estado_inicial and estado_meta:
-        archivo_salida = os.path.join("uploads", "salida.json")
-        archivo_salida = a_estrella(estado_inicial, estado_meta, calcular_heuristica_manhattan, archivo_salida)
-        #archivo_salida = a_estrella(estado_inicial, estado_meta, calcular_heuristica_manhattan)
-        return archivo_salida
-    else:
-        return None
+    if validar_estado_inicial(estado_inicial) and validar_estado_meta(estado_meta):
+        return {"solucion": a_estrella(estado_inicial, estado_meta)}
+    
+    return {"error": "Estados inválidos"}

@@ -21,37 +21,25 @@ def serve_frontend():
 
 @app.route('/upload', methods=['POST'])
 def upload_files():
-    if 'inicial' not in request.files or 'meta' not in request.files:
-        return jsonify({'error': 'Faltan archivos'}), 400
-
-    inicial = request.files['inicial']
-    meta = request.files['meta']
-
-    inicial_path = os.path.join(UPLOAD_FOLDER, "inicial.txt")
-    meta_path = os.path.join(UPLOAD_FOLDER, "meta.txt")
-
-    inicial.save(inicial_path)
-    meta.save(meta_path)
-
-    solucion_path = resolver_rubik_race(inicial_path, meta_path)
-
-    if solucion_path is None or not os.path.exists(solucion_path):
-        print(f"Error: No se encontró el archivo de salida en {solucion_path}")
-        return jsonify({"error": "No se pudo resolver el puzzle o el archivo de salida no se generó"}), 400
-
-    print(f"Abriendo archivo de solución en: {solucion_path}")
-    
     try:
-        with open(solucion_path, "r", encoding="utf-8") as file:
-            solucion = json.load(file)  # Leer como JSON
-        response = jsonify(solucion)
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        response.headers.add("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-        response.headers.add("Access-Control-Allow-Headers", "Content-Type")
-        return response
+        if "inicial" not in request.files or "meta" not in request.files:
+            return jsonify({"error": "Faltan archivos"}), 400
+
+        inicial = request.files["inicial"].read().decode("utf-8")  # Leer en memoria
+        meta = request.files["meta"].read().decode("utf-8")  # Leer en memoria
+
+        # Enviar directamente los datos a la función sin guardarlos en disco
+        solucion = resolver_rubik_race(inicial, meta)
+
+        if solucion is None:
+            return jsonify({"error": "No se pudo resolver el puzzle"}), 400
+
+        return jsonify({"solucion": solucion})
+
     except Exception as e:
-        print(f"Error al abrir {solucion_path}: {e}")
-        return jsonify({"error": f"No se pudo leer el archivo de salida: {e}"}), 500
+        print(f"Error en /upload: {e}")
+        return jsonify({"error": f"Error interno del servidor: {str(e)}"}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
