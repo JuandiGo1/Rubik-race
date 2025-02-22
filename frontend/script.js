@@ -127,6 +127,8 @@ async function enviarArchivos() {
 }
 
 function mostrarPaso() {
+    console.log(solucion
+    );
     if (solucion.length === 0) {
         alert("No hay solución disponible");
         return;
