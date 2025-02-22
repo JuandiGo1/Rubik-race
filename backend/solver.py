@@ -365,9 +365,8 @@ def a_estrella(estado_inicial, estado_meta, heuristica=calcular_heuristica_manha
 
     #Si no se encuentra una solución
     print("No se encontró una solución.")
-    with open(archivo_salida, "w") as archivo:
-        json.dump({"solucion": []}, archivo, indent=4)
-    return archivo_salida
+
+    return {"solucion": []}
 
 
 
@@ -379,6 +378,6 @@ def resolver_rubik_race(archivo_inicial, archivo_meta):
     estado_meta = leer_estado(archivo_meta)
     
     if validar_estado_inicial(estado_inicial) and validar_estado_meta(estado_meta):
-        return {"solucion": a_estrella(estado_inicial, estado_meta)}
+        return  a_estrella(estado_inicial, estado_meta)
     
     return {"error": "Estados inválidos"}
