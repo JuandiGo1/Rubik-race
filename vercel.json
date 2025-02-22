@@ -4,12 +4,14 @@
       { "src": "backend/app.py", "use": "@vercel/python" },
       { "src": "frontend/index.html", "use": "@vercel/static" },
       { "src": "frontend/styles.css", "use": "@vercel/static" },
-      { "src": "frontend/script.js", "use": "@vercel/static" }
+      { "src": "frontend/script.js", "use": "@vercel/static" },
+      { "src": "frontend/github-logo.png", "use": "@vercel/static" }
     ],
     "routes": [
       { "src": "/upload", "dest": "/backend/app.py" },
       { "src": "/styles.css", "dest": "/frontend/styles.css" },
       { "src": "/script.js", "dest": "/frontend/script.js" },
+      { "src": "/github-logo.png", "dest": "/frontend/github-logo.png" },
       { "src": "/(.*)", "dest": "/frontend/index.html" }
     ]
   }
