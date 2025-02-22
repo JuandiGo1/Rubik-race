@@ -1,13 +1,20 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from solver import resolver_rubik_race
 import os
 import json
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Subir un nivel
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+
+app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
 CORS(app, resources={r"/*": {"origins": ["http://127.0.0.1:5500", "http://127.0.0.1:8080"]}})
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route("/")
+def serve_frontend():
+    return send_from_directory(FRONTEND_DIR, "index.html")
 
 @app.route('/upload', methods=['POST'])
 def upload_files():

@@ -14,7 +14,7 @@ body {
 .title {
     font-size: 100px;
     font-weight: bold;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 .title .r { color: red; }
@@ -38,6 +38,7 @@ body {
     align-items: center;
     width: 100%;
     gap: 40px;
+    padding-bottom: 20px;
 }
 
 .file-upload {
@@ -120,3 +121,37 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+.footer {
+    background-color: #2e2e2e;
+    color: white;
+    text-align: center;
+    padding: 0px; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px; 
+    font-weight: bold;
+}
+.contributors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.contributor {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.github-logo {
+    width: 30px;
+    height: 30px;
+    padding-bottom: 3px;
+}
+
