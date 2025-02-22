@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #1e1e1e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.title {
+    font-size: 100px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.title .r { color: red; }
+.title .u { color: yellow; }
+.title .b { color: blue; }
+.title .i { color: green; }
+.title .k { color: orange; }
+.title .s { color: white; }
+.title .race { color: gray; }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    color: rgb(169, 169, 241);
+    border-radius: 10px;
+}
+
+.game-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.grid-container {
+    background-color: #2e2e2e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(5, 60px);
+    gap: 5px;
+    margin: 20px auto;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3e3e3e;
+}
+
+.grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 5px;
+    margin: 20px auto;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3e3e3e;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 0;
+}
+
+/* Colores de las fichas */
+.cell.R { background-color: red; }
+.cell.A { background-color: yellow; }
+.cell.B { background-color: white; }
+.cell.V { background-color: green; }
+.cell.N { background-color: orange; }
+.cell.Z { background-color: blue; }
+.cell.empty { background-color: gray; }
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

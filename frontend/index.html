@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik Race Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="title">
+            <span class="r">R</span>
+            <span class="u">u</span>
+            <span class="b">b</span>
+            <span class="i">i</span>
+            <span class="k">k</span>
+            <span class="s">'s</span>
+            <span class="race">Race</span>
+        </h1>
+        
+        <div class="container">
+            <div class="file-upload">
+                <label for="inicial">Selecciona el archivo inicial:</label>
+                <input type="file" id="inicial" accept=".txt">
+                
+                <label for="meta">Selecciona el archivo meta:</label>
+                <input type="file" id="meta" accept=".txt">
+                
+                <button onclick="enviarArchivos()">Resolver</button>
+            </div>
+            
+            <div class="game-area">
+                <div class="grid-container">
+                    <h3>Meta</h3>
+                    <div id="meta-tablero" class="grid grid-3x3"></div>
+                </div>
+                
+                <div class="grid-container">
+                    <h3>Tablero</h3>
+                    <div id="tablero" class="grid"></div>
+                    <p id="heuristica">Heurística: -</p>
+                    <p id="movimientos">Movimientos: -</p>
+                    
+                    <div class="button-group">
+                        <button id="siguiente" onclick="mostrarSiguientePaso()" disabled>Siguiente Paso</button>
+                        <button id="auto-play" onclick="iniciarAutoPlay()" disabled>Play</button>
+                </div>
+    
+                
+            </div>
+
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
