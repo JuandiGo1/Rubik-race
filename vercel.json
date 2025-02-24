@@ -1,12 +1,12 @@
 {
   "version": 2,
   "functions": {
-      "backend/app.py": {
+      "api/app.py": {
           "maxDuration": 60
       }
   },
   "builds": [
-      { "src": "backend/app.py", "use": "@vercel/python" },
+      { "src": "api/app.py", "use": "@vercel/python" },
       { "src": "frontend/index.html", "use": "@vercel/static" },
       { "src": "frontend/styles.css", "use": "@vercel/static" },
       { "src": "frontend/script.js", "use": "@vercel/static" },
@@ -14,7 +14,7 @@
       { "src": "frontend/favicon.png", "use": "@vercel/static" }
   ],
   "routes": [
-      { "src": "/upload", "dest": "/backend/app.py" },
+      { "src": "/upload", "dest": "/api/app.py" },
       { "src": "/styles.css", "dest": "/frontend/styles.css" },
       { "src": "/script.js", "dest": "/frontend/script.js" },
       { "src": "/github-logo.png", "dest": "/frontend/github-logo.png" },
