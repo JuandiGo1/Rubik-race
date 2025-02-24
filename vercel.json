@@ -2,7 +2,7 @@
   "version": 2,
 
   "builds": [
-      { "src": "api/app.py", "use": "@vercel/python" },
+      { "src": "api/app.py", "use": "@vercel/python", "config": { "maxDuration": 60 } },
       { "src": "frontend/index.html", "use": "@vercel/static" },
       { "src": "frontend/styles.css", "use": "@vercel/static" },
       { "src": "frontend/script.js", "use": "@vercel/static" },
