@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <title>Rubik Race Solver</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -45,6 +46,7 @@
                 <input type="file" id="meta" accept=".txt">
                 
                 <button onclick="enviarArchivos()">Resolver</button>
+                <p id="loading-text" class="loading-text" style="display: none;">Cargando solución...</p>
             </div>
             
             <div class="game-area">

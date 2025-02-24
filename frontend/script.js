@@ -80,11 +80,15 @@ function actualizarTablero(id, matriz) {
 async function enviarArchivos() {
     const inicial = document.getElementById("inicial").files[0];
     const meta = document.getElementById("meta").files[0];
+    const loadingText = document.getElementById("loading-text");
+
 
     if (!inicial || !meta) {
         alert("Por favor, selecciona ambos archivos.");
         return;
     }
+
+    loadingText.style.display = "block";
 
     let formData = new FormData();
     formData.append("inicial", inicial);
@@ -125,6 +129,8 @@ async function enviarArchivos() {
     } catch (error) {
         console.error("Error en la solicitud:", error);
         alert("Hubo un problema al procesar la solicitud. Revisa la consola.");
+    } finally {
+        loadingText.style.display = "none";
     }
 }
 

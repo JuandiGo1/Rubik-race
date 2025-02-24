@@ -1,18 +1,24 @@
 {
-    "version": 2,
-    "builds": [
+  "version": 2,
+  "functions": {
+      "backend/app.py": {
+          "maxDuration": 60
+      }
+  },
+  "builds": [
       { "src": "backend/app.py", "use": "@vercel/python" },
       { "src": "frontend/index.html", "use": "@vercel/static" },
       { "src": "frontend/styles.css", "use": "@vercel/static" },
       { "src": "frontend/script.js", "use": "@vercel/static" },
-      { "src": "frontend/github-logo.png", "use": "@vercel/static" }
-    ],
-    "routes": [
+      { "src": "frontend/github-logo.png", "use": "@vercel/static" },
+      { "src": "frontend/favicon.png", "use": "@vercel/static" }
+  ],
+  "routes": [
       { "src": "/upload", "dest": "/backend/app.py" },
       { "src": "/styles.css", "dest": "/frontend/styles.css" },
       { "src": "/script.js", "dest": "/frontend/script.js" },
       { "src": "/github-logo.png", "dest": "/frontend/github-logo.png" },
-      { "src": "/(.*)", "dest": "/frontend/index.html" }
-    ]
-  }
-  
+      { "src": "/(.*)", "dest": "/frontend/index.html" },
+      { "src": "/favicon.png", "dest": "/frontend/favicon.png" }
+  ]
+}

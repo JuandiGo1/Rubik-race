@@ -238,7 +238,7 @@ def calcular_heuristica_manhattan(estado_actual, estado_meta):
         fila_meta = i // 3
         columna_meta = i % 3
 
-        distancia_min = 120
+        distancia_min = float("inf")
         for j in range(len(estado_actual)):
             if estado_actual[j] == meta:
                 fila_actual = (j // 5) - 1
