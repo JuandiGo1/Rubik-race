@@ -1,10 +1,6 @@
 {
   "version": 2,
-  "functions": {
-      "api/app.py": {
-          "maxDuration": 60
-      }
-  },
+
   "builds": [
       { "src": "api/app.py", "use": "@vercel/python" },
       { "src": "frontend/index.html", "use": "@vercel/static" },
