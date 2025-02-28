@@ -51,4 +51,4 @@ El proyecto está en producción y accesible en el siguiente enlace:
 Este proyecto está bajo la licencia MIT. Puedes ver más detalles en el archivo [LICENSE](LICENSE).
 
 ---
-Desarrollado con ❤️ por [Juan Maestre]
+Desarrollado con ❤️ por [ Juan Maestre, Laura Gomez & Fernando Valencia ]
