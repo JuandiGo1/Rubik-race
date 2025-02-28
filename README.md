@@ -4,7 +4,7 @@
     Rubik's Race Solver
   </h1>
 
-<img src="frontend/favicon.png" alt="rubik" width="250"/>
+<img src="frontend/rbrace.png" alt="rubik" width="250"/>
 
 
 [![GitHub JuandiGo1](https://img.shields.io/badge/by-JuandiGo1-red)](https://github.com/JuandiGo1)
