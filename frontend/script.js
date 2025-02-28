@@ -6,6 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarTablero();
     document.getElementById("inicial").addEventListener("change", previsualizarInicial);
     document.getElementById("meta").addEventListener("change", previsualizarMeta);
+    document.getElementById("limpiar").addEventListener("click", limpiarTablero);
+    function actualizarNombreArchivo(inputId, textId) {
+        const inputFile = document.getElementById(inputId);
+        const textField = document.getElementById(textId);
+
+        inputFile.addEventListener("change", function() {
+            textField.value = this.files.length > 0 ? this.files[0].name : "No file chosen";
+        });
+    }
+
+    // Aplicar función a los inputs de archivo
+    actualizarNombreArchivo("inicial", "inicial-text");
+    actualizarNombreArchivo("meta", "meta-text");
+    actualizarEstadoBotonLimpiar();
 });
 
 function inicializarTablero() {
@@ -77,6 +91,19 @@ function actualizarTablero(id, matriz) {
     });
 }
 
+
+
+function limpiarTablero() {
+    document.getElementById("inicial").value = "";
+    document.getElementById("meta").value = "";
+    document.getElementById("inicial-text").value = "No file chosen";
+    document.getElementById("meta-text").value = "No file chosen";
+    document.getElementById("limpiar").disabled = true;
+    document.getElementById("siguiente").disabled = true;
+    document.getElementById("auto-play").disabled = true;
+    inicializarTablero();
+}
+
 async function enviarArchivos() {
     const inicial = document.getElementById("inicial").files[0];
     const meta = document.getElementById("meta").files[0];
@@ -126,6 +153,7 @@ async function enviarArchivos() {
                 alert("No hay solución disponible.");
             }
         }
+        document.getElementById("limpiar").disabled = false;
     } catch (error) {
         console.error("Error en la solicitud:", error);
         alert("Hubo un problema al procesar la solicitud. Revisa la consola.");

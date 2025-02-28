@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/favicon.png">
     <title>Rubik Race Solver</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <footer class="footer">
     <p>Desarrollado por:</p>
@@ -39,13 +40,31 @@
         
         <div class="container">
             <div class="file-upload">
-                <label for="inicial">Selecciona el archivo inicial:</label>
-                <input type="file" id="inicial" accept=".txt">
+                <label class="form-label">Selecciona los archivos:</label>
+
+                <!-- Input de archivo para el estado inicial -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="inicial-text" placeholder="No file chosen" readonly>
+                    <label class="input-group-text btn btn-select"">
+                        <i class="bi bi-folder"></i> Seleccionar Inicial
+                        <input type="file" id="inicial" accept=".txt" class="d-none">
+                    </label>
+                </div>
+
+                <!-- Input de archivo para la meta -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="meta-text" placeholder="No file chosen" readonly>
+                    <label class="input-group-text btn btn-select">
+                        <i class="bi bi-folder"></i> Seleccionar Meta
+                        <input type="file" id="meta" accept=".txt" class="d-none">
+                    </label>
+                </div>
                 
-                <label for="meta">Selecciona el archivo meta:</label>
-                <input type="file" id="meta" accept=".txt">
-                
-                <button onclick="enviarArchivos()">Resolver</button>
+                <div class="button-group">
+                    <button onclick="enviarArchivos()">Resolver</button>
+                    <button id="limpiar" disabled>Limpiar</button>
+                    
+                </div>
                 <p id="loading-text" class="loading-text" style="display: none;">Cargando solución...</p>
             </div>
             
@@ -81,6 +100,6 @@
     
     
     
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
