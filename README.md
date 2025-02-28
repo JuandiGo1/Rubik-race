@@ -7,9 +7,9 @@
 <img src="frontend/rbrace.png" alt="rubik" width="250"/>
 
 
-[![GitHub JuandiGo1](https://img.shields.io/badge/by-JuandiGo1-red)](https://github.com/JuandiGo1)
-[![GitHub Slrosales](https://img.shields.io/badge/by-Slrosales-purple)](https://github.com/Slrosales)
-[![GitHub jfbenitezz](https://img.shields.io/badge/by-FernandoMVG-blue)]((https://github.com/FernandoMVG))
+[![GitHub JuandiGo1](https://img.shields.io/badge/by-JuandiGo1-green)](https://github.com/JuandiGo1)
+[![GitHub Slrosales](https://img.shields.io/badge/by-Slrosales-green)](https://github.com/Slrosales)
+[![GitHub jfbenitezz](https://img.shields.io/badge/by-FernandoMVG-green)]((https://github.com/FernandoMVG))
 
 </div>
 
