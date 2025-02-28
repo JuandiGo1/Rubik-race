@@ -10,11 +10,15 @@ body {
     height: 100vh;
 }
 
+h1 {
+    margin: 20px; /* Ajusta este valor según necesites */
+}
 
 .title {
     font-size: 100px;
     font-weight: bold;
-    padding-bottom: 0px;
+    padding-bottom: 7px;
+    padding-top: 10px;
 }
 
 .title .r { color: red; }
@@ -29,16 +33,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     gap: 40px;
-    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .file-upload {
@@ -53,8 +59,9 @@ body {
 .game-area {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
+    flex-direction: row;
 }
 
 .grid-container {
@@ -70,7 +77,7 @@ body {
     grid-template-columns: repeat(5, 60px);
     grid-template-rows: repeat(5, 60px);
     gap: 5px;
-    margin: 20px auto;
+    margin: 10px auto;
     justify-content: center;
     padding: 10px;
     border-radius: 10px;
@@ -95,6 +102,25 @@ body {
     border: 2px solid black;
     border-radius: 8px;
     font-size: 0;
+}
+
+.game-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; /* Separar el tablero de la info */
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #2e2e2e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    min-width: 200px; /* Tamaño mínimo */
 }
 
 /* Colores de las fichas */
