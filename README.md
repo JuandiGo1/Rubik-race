@@ -30,6 +30,40 @@ Rubik Race Solver es una aplicación web que resuelve el juego Rubik's Race util
 - Visualización de la solución paso a paso.
 - Desplegado en Vercel para acceso en línea.
 
+## 🎯 Funcionamiento
+
+1. El usuario sube dos archivos de texto:
+   - **Inicial:** Representa la configuración inicial del tablero.
+   - **Meta:** Representa la disposición objetivo a la que se debe llegar.
+2. El backend procesa los archivos y ejecuta el algoritmo A*.
+3. Se muestra la secuencia óptima de movimientos para alcanzar la meta.
+
+## 📥 Formato de archivos
+
+Los archivos deben ser **.txt** y tener el siguiente formato:
+
+### 🔹 Estado Inicial
+Debe contener una matriz de 5x5 con los colores representados por letras (A: Amarillo, B: Blanco, R: Rojo, N: Naranja, Z: Azul, V: Verde) y un `*` indicando el espacio vacío.
+
+#### Ejemplo:
+```
+ABVZV
+RBZNN
+BB*RA
+ZRNVZ
+AAVRN
+```
+
+### 🔹 Estado Meta
+Debe contener una matriz de 3x3 representando la disposición final deseada.
+
+#### Ejemplo:
+```
+ZBB
+RAV
+NVA
+```
+
 
 ## 🌐 Despliegue
 
