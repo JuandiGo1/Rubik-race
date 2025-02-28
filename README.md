@@ -1,6 +1,18 @@
-# Rubik Race Solver
 
-![Rubik Race Solver](https://rubik-race.vercel.app/github-logo.png)
+<div align="center">
+  <h1>
+    Rubik's Race Solver
+  </h1>
+
+<img src="frontend/favicon.png" alt="rubik" width="250"/>
+
+
+[![GitHub JuandiGo1](https://img.shields.io/badge/by-JuandiGo1-red)](https://github.com/JuandiGo1)
+[![GitHub Slrosales](https://img.shields.io/badge/by-Slrosales-purple)](https://github.com/Slrosales)
+[![GitHub jfbenitezz](https://img.shields.io/badge/by-FernandoMVG-blue)]((https://github.com/FernandoMVG))
+
+</div>
+
 
 Rubik Race Solver es una aplicación web que resuelve el juego Rubik's Race utilizando el algoritmo A* con una heurística basada en la distancia de Manhattan. Los usuarios pueden cargar un estado inicial y un estado meta en formato de archivo de texto y visualizar la solución paso a paso.
 
