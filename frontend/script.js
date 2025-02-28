@@ -150,7 +150,7 @@ async function enviarArchivos() {
                 document.getElementById("auto-play").disabled = false;
                 mostrarPaso();
             } else {
-                alert("No hay solución disponible.");
+                alert("No hay solución disponible. Revise si son validos los estados ingresados");
             }
         }
         document.getElementById("limpiar").disabled = false;
