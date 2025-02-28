@@ -221,7 +221,7 @@ def sucesor(estado, movimiento_numero):
 
 
 
-def calcular_heuristica_manhattan(estado_actual, estado_meta):
+def heuristica_manhattan(estado_actual, estado_meta):
     """
     Calcula la heurística de Manhattan.
 
@@ -238,7 +238,7 @@ def calcular_heuristica_manhattan(estado_actual, estado_meta):
         fila_meta = i // 3
         columna_meta = i % 3
 
-        distancia_min = 1000
+        distancia_min = float("inf")
         for j in range(len(estado_actual)):
             if estado_actual[j] == meta:
                 fila_actual = (j // 5) - 1
@@ -250,6 +250,34 @@ def calcular_heuristica_manhattan(estado_actual, estado_meta):
                     distancia_min = min(distancia_min, distance)
         distancia_total += distancia_min
     return distancia_total
+
+
+def heuristica_filas_completas(estado_actual, estado_meta):
+    """
+    Heurística con ponderación por filas completadas
+
+    Args:
+        estado_actual (str): Estado actual del juego
+        estado_meta (str): Estado meta del juego
+
+    Returns:
+        int: Valor heurístico de la diferencia
+        entre Manhattan y la ponderación por filas completadas
+    """
+    distancia_manhattan = heuristica_manhattan(estado_actual, estado_meta)
+
+    # Obtener cadena del centro de la matriz 5x5
+    centro_actual = estado_actual[6:9] + estado_actual[11:14] + estado_actual[16:19]
+    filas_completas = 0
+    for i in range(3):
+        # Verificacion de estado de cada fila central con meta 3x3
+        if centro_actual[i*3:(i+1)*3] == estado_meta[i*3:(i+1)*3]:
+            filas_completas += 1
+
+    # Bonificación por filas completas
+    bonificacion_filas_completas = filas_completas * 2  # El doble de puntos de reducción por fila completa
+
+    return distancia_manhattan - bonificacion_filas_completas
 
 
 
@@ -312,6 +340,9 @@ def reconstruir_camino(nodo_meta):
     nodo_actual = nodo_meta
     while nodo_actual is not None and nodo_actual.movimiento is not None:
         tablero_matriz = [list(nodo_actual.estado[i:i+5]) for i in range(0, 25, 5)]
+        if nodo_actual.costo_h == float('inf'): 
+            nodo_actual.costo_h = 200
+        
         camino.append({
             "heuristica": nodo_actual.costo_h,
             "movimiento": nodo_actual.movimiento,
@@ -321,7 +352,7 @@ def reconstruir_camino(nodo_meta):
         nodo_actual = nodo_actual.padre
     return camino[::-1]
 
-def a_estrella(estado_inicial, estado_meta, heuristica=calcular_heuristica_manhattan, archivo_salida="uploads/salida.json"):
+def a_estrella(estado_inicial, estado_meta, heuristica=heuristica_filas_completas, archivo_salida="uploads/salida.json"):
     """
     Implementa el algoritmo A* para encontrar una solución al juego.
 
