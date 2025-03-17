@@ -16,6 +16,9 @@
 
 Rubik Race Solver es una aplicación web que resuelve el juego Rubik's Race utilizando el algoritmo A* con una heurística basada en la distancia de Manhattan. Los usuarios pueden cargar un estado inicial y un estado meta en formato de archivo de texto y visualizar la solución paso a paso.
 
+![image](https://github.com/user-attachments/assets/75adcc5d-67ad-4662-8e7f-4e04de615032)
+
+
 ## 🚀 Tecnologías Utilizadas
 
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap 5
